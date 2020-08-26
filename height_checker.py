@@ -11,7 +11,6 @@ Notice that when a group of students is selected they can reorder in any possibl
 class Solution(object):
     def heightChecker(self, heights):
         
-        
         # corner cases
         if len(heights) == 0 or len(heights) == 1 or (len(heights) == 2 and heights[0] <= heights[1]):
             return 0
