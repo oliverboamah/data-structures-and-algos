@@ -10,21 +10,16 @@ Could you do it without extra space and in O(n) runtime? You may assume the retu
 class Solution:
     def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
         
-        disappeared_nums = []
-        for i in range(1, len(nums) + 1):
-            disappeared_nums.append(i)
+        result = []
+        for i in range(len(nums)):
+            j = abs(nums[i]) - 1
+            nums[j] = abs(nums[j]) * -1
         
         for i in range(len(nums)):
-            if nums[i] == disappeared_nums[nums[i] - 1]:
-                disappeared_nums[nums[i] - 1] = 0
-                
-        nums = []
-                
-        for i in range(len(disappeared_nums)):
-            if disappeared_nums[i] != 0:
-                nums.append(disappeared_nums[i])
+            if nums[i] > 0:
+                result.append(i + 1)
         
-        return nums
+        return result
 
 # example
 result = Solution().findDisappearedNumbers[4,3,2,7,8,2,3,1]
