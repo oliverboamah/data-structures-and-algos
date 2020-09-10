@@ -11,13 +11,12 @@ class Solution:
         
         dictionary = {}
         for i in range(len(nums)):
-            dictionary.update({nums[i]: i})
-        
-        for i in range(len(nums)):
             complement = target - nums[i]
             if complement in dictionary and dictionary[complement] != i:
                 return [i, dictionary[complement]]
-
+            
+            dictionary.update({nums[i]: i})
+            
 # example            
 result = Solution.twoSum([2, 7, 11, 15])
 print(result)
