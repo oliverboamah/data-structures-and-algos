@@ -7,6 +7,6 @@ class Node:
         next: The reference to the next node in the linked list
     """
 
-    def __init__(self):
-        self.data = None
-        self.next = None
+    def __init__(self, data=None, next=None):
+        self.data = data
+        self.next = next
