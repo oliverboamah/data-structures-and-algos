@@ -23,14 +23,14 @@ class LinkedList:
         if self.size == 0:
             self.head = Node(data=value)
         else:
-            node = Node(data=value)
+            new_node = Node(data=value)
 
             if self.size == 1:
-                self.tail = node
+                self.tail = new_node
                 self.head.next = self.tail
             else:
-                self.tail.next = node
-                self.tail = node
+                self.tail.next = new_node
+                self.tail = new_node
 
         self.size += 1
 
@@ -48,3 +48,42 @@ class LinkedList:
                 return True
 
             current_node = current_node.next
+
+    """
+    Insert a value at a specified index in the linked list
+    """
+    def insert(self, index, value):
+        new_node = Node(data=value)
+
+        if index == 0:
+            new_node.next = self.head
+            self.head = new_node
+
+        if index == self.size:
+            self.add(value=value)
+            return
+
+        else:
+            current_node = self.head
+            for number in range(index):
+                current_node = current_node.next
+
+            new_node.next = current_node.next
+            current_node.next = new_node
+
+        self.size += 1
+
+    """
+    Get the value at the specified index in the linked list
+    """
+    def get(self, index):
+
+        if index >= self.size:
+            raise IndexError(f'Index out of range: {index}')
+
+        else:
+            current_node = self.head
+            for number in range(index):
+                current_node = current_node.next
+
+            return current_node
