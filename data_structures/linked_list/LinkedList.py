@@ -87,3 +87,30 @@ class LinkedList:
                 current_node = current_node.next
 
             return current_node
+
+    """
+    Remove a value at the specified index in the linked list
+    """
+    def remove(self, index):
+        if index >= self.size:
+            raise IndexError(f'Index out of range: {index}')
+        elif index == 0 and size == 1:
+            self.head = None
+        else:
+            current_node = self.head
+            for number in range(index - 1):
+                current_node = current_node.next
+
+            node_to_delete = current_node.next
+            current_node.next = node_to_delete.next
+            node_to_delete = None
+
+        size -= 1
+
+    """
+    Remove and return the value at the tail of the linked list
+    """
+    def pop(self):
+        value = self.tail.data
+        self.tail = None
+        return value
