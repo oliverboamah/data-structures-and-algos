@@ -11,15 +11,20 @@ class LinkedList:
         size: Holds the number of nodes(elements) in the linked list
     """
 
-    def __init__(self):
+    def __init__(self, data_structure='linked list'):
         self.head = None
         self.tail = None
         self.size = 0
+        self.data_structure = data_structure
+        self.errors = {
+            'EMPTY': f'There are no elements in the {self.data_structure}',
+            'INDEX_OUT_OF_RANGE': f'Index out of range: '
+        }
 
     """
-    Add a value to the linked list
+    Add a value to tail of the linked list
     """
-    def add(self, value):
+    def add_tail(self, value):
         if self.size == 0:
             self.head = Node(data=value)
         else:
@@ -31,6 +36,20 @@ class LinkedList:
             else:
                 self.tail.next = new_node
                 self.tail = new_node
+
+        self.size += 1
+
+    """
+    Add a value to the head of the linked list
+    """
+    def add_head(self, value):
+        new_node = Node(data=value)
+
+        if self.size == 0:
+            self.head = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
 
         self.size += 1
 
@@ -79,7 +98,7 @@ class LinkedList:
     def get(self, index):
 
         if index >= self.size:
-            raise IndexError(f'Index out of range: {index}')
+            raise IndexError(self.errors.get('INDEX_OUT_OF_RANGE') + str(index))
 
         else:
             current_node = self.head
@@ -93,7 +112,7 @@ class LinkedList:
     """
     def remove(self, index):
         if index >= self.size:
-            raise IndexError(f'Index out of range: {index}')
+            raise IndexError(self.errors.get('INDEX_OUT_OF_RANGE') + str(index))
         elif index == 0 and size == 1:
             self.head = None
         else:
@@ -111,6 +130,43 @@ class LinkedList:
     Remove and return the value at the tail of the linked list
     """
     def pop(self):
-        value = self.tail.data
-        self.tail = None
-        return value
+        return self.remove_tail(return_value=True)
+
+    """
+    Remove the value from the head of the linked list
+    """
+    def remove_head(self):
+        if self.size == 0:
+            raise Exception(self.errors.get('EMPTY'))
+        elif size == 1:
+            self.head = None
+        else:
+            node = self.head
+            self.head = self.head.next
+            node = None
+
+        self.size -= 1
+
+    """
+    Remove the value from the tail of the linked list
+    """
+    def remove_tail(self, return_value=False):
+
+        if self.size == 0:
+            raise Exception(self.errors.get('EMPTY'))
+        elif size == 1:
+            value = self.head.data
+            self.head = None
+        else:
+            value = self.tail.data
+            self.tail = None
+
+            current_node = self.head
+            while current_node.next != null:
+                current_node = current_node
+
+            self.tail = current_node
+
+        self.size -= 1
+
+        return value if return_value else None
