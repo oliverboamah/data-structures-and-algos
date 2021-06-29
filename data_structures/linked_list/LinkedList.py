@@ -21,6 +21,10 @@ class LinkedList:
             'INDEX_OUT_OF_RANGE': f'Index out of range: '
         }
 
+    """
+    Big O Time Complexity(Worst case) => O(N)
+    Big O Space Complexity(Worst case) => O(1)
+    """
     def __str__(self):
         values = None
         current_node = self.head
@@ -35,6 +39,8 @@ class LinkedList:
 
     """
     Add a value to tail of the linked list
+    Big O Time Complexity(Worst case) => O(1)
+    Big O Space Complexity(Worst case) => O(1)
     """
     def add_tail(self, value):
         if self.size == 0:
@@ -53,6 +59,8 @@ class LinkedList:
 
     """
     Add a value to the head of the linked list
+    Big O Time Complexity(Worst case) => O(1)
+    Big O Space Complexity(Worst case) => O(1)
     """
     def add_head(self, value):
         new_node = Node(data=value)
@@ -68,6 +76,8 @@ class LinkedList:
     """
     Check if the linked list contains a value
     Return True if the specified value is found, else return False
+    Big O Time Complexity(Worst case) => O(N)
+    Big O Space Complexity(Worst case) => O(1)
     """
     def contains(self, value):
         if self.size == 0:
@@ -82,6 +92,8 @@ class LinkedList:
 
     """
     Insert a value at a specified index in the linked list
+    Big O Time Complexity(Worst case) => O(N)
+    Big O Space Complexity(Worst case) => O(1)
     """
     def insert(self, index, value):
         new_node = Node(data=value)
@@ -91,7 +103,7 @@ class LinkedList:
             self.head = new_node
 
         if index == self.size:
-            self.add(value=value)
+            self.add_tail(value=value)
             return
 
         else:
@@ -106,6 +118,8 @@ class LinkedList:
 
     """
     Get the value at the specified index in the linked list
+    Big O Time Complexity(Worst case) => O(N)
+    Big O Space Complexity(Worst case) => O(1)
     """
     def get(self, index):
 
@@ -121,6 +135,8 @@ class LinkedList:
 
     """
     Remove a value at the specified index in the linked list
+    Big O Time Complexity(Worst case) => O(N)
+    Big O Space Complexity(Worst case) => O(1)
     """
     def remove(self, index):
         if index >= self.size:
@@ -140,6 +156,8 @@ class LinkedList:
 
     """
     Remove the value from the head of the linked list
+    Big O Time Complexity(Worst case) => O(1)
+    Big O Space Complexity(Worst case) => O(1)
     """
     def remove_head(self):
         if self.size == 0:
@@ -155,6 +173,8 @@ class LinkedList:
 
     """
     Remove the value from the tail of the linked list
+    Big O Time Complexity(Worst case) => O(N)
+    Big O Space Complexity(Worst case) => O(1)
     """
     def remove_tail(self, return_value=False):
 
