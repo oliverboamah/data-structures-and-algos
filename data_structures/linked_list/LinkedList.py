@@ -139,12 +139,6 @@ class LinkedList:
         size -= 1
 
     """
-    Remove and return the value at the tail of the linked list
-    """
-    def pop(self):
-        return self.remove_tail(return_value=True)
-
-    """
     Remove the value from the head of the linked list
     """
     def remove_head(self):
