@@ -21,6 +21,18 @@ class LinkedList:
             'INDEX_OUT_OF_RANGE': f'Index out of range: '
         }
 
+    def __str__(self):
+        values = None
+        current_node = self.head
+
+        while current_node.next is not None:
+            current_node = current_node.next
+            values += f', {current_node.data}'
+
+        values = f'[{values}]'
+
+        return values
+
     """
     Add a value to tail of the linked list
     """
